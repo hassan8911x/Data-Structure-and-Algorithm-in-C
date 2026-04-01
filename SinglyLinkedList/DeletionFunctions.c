@@ -1,6 +1,6 @@
 //Deletion Functions for Singly Linked List
 #include<stdio.h>
-
+#include<stdlib.h>
 typedef struct Node{
 	int data;
 	struct Node* next;
@@ -26,7 +26,7 @@ int removeHead(Node**head,Node**tail){
 	}
 	else{
 		Node* temp=*head;	//storing head
-		*head=*head->next;	//marking next the head
+		*head=(*head)->next;	//marking next the head
 		free(temp);			//freeing the memory 
 		return 1;
 	}
@@ -63,7 +63,7 @@ int removeTail(Node**head,Node**tail){
 }
 
 //Helper Function to calculate length
-int calcLength(Node*head){		//Not passing pointer to pointer because pass by value is enough for simple transversal
+int calcLength(Node*head){	
 	int length=0;
 	while(head!=NULL){
 		length++;
@@ -100,7 +100,8 @@ int removeAtIndex(Node** head, Node** tail, int index) {
     }
     
     Node* temp = *head;
-    for (int i = 0; i < index - 1; i++) {
+    int i;
+    for (i = 0; i < index - 1; i++) {
         temp = temp->next;
     }
     Node* target = temp->next;
@@ -139,6 +140,126 @@ int removeByValue(Node**head,Node**tail,int value){
 	}
 	return 0;
 }
+
+//Adding some helper Algorithms
+void printList(Node* head){		//pass by value is enough for transversal only
+	while(head!=NULL){
+		printf("%d -> ",head->data);
+		head=head->next;
+	}
+	printf("NULL");
+}
+
+
+/*Recursive Printing List
+Time Complexity: Linear O(n)
+Space Complexity: Linear O(n) bcz recursion uses call stack 
+*/
+void printListRec(Node* head){
+	if(head==NULL){
+		printf("NULL");
+		return;
+	}
+	printf("%d -> ",head->data);
+	printListRec(head->next);
+}
+
+
+/*Search By value + occurance
+Worst Case Complexity: O(n) when need to transverse all nodes
+Space complexity is constant O(1)
+*/
+int searchByValue(Node* head,int value, int occurance){
+	int index=0;
+	int occurCounter=0;
+	while(head!=NULL){
+		if(head->data==value){
+			occurCounter++;
+			if(occurCounter==occurance){
+				return index;
+			}
+		}
+		head=head->next;
+		index++;
+	}
+	return -1;
+}
+
+
+/*
+returning simple 0 for invalid index is not well bcz list may contain 0 value 
+therefore, if operation return 1, then check result and if 0, mean index is invalid
+Time Complexity : O(n) and space complexity is constant
+*/
+int searchByIndex(Node* head, int index,int* result){
+	int counter=0;
+	while(head!=NULL && counter!=index){
+		counter++;
+		head=head->next;
+	}
+	if(head!=NULL){
+		*result=head->data;		//deferencing and writing value into address 
+		return 1;
+	}
+	else{
+		return 0;		
+	}
+}
+
+
+/*
+Updating Node Value By Index:
+1. Empty list or invalid index
+2. Index's node exists then simply returning
+O(n) : Worst Case Complexity
+*/
+int UpdateValue(Node*head,int index, int newValue){
+	int counter=0;
+	while(head!=NULL){
+		if(index==counter){
+			head->data=newValue;
+			return 1;
+		}
+		head=head->next;
+		counter++;
+	}
+	return 0;
+}
+
+int isEmpty(Node* head){
+	return(head==NULL)?  1:0;
+}
+
+
+int main(){
+	Node* head = (Node*)malloc(sizeof(Node));
+	Node* tail=NULL;
+	head->data = 10;
+
+	Node* secondNode = (Node*)malloc(sizeof(Node));
+	secondNode->data = 20;
+
+	Node* thirdNode = (Node*)malloc(sizeof(Node));
+	thirdNode->data = 30;
+
+	head->next = secondNode;
+	secondNode->next = thirdNode;
+	thirdNode->next = NULL;
+	 tail = thirdNode;
+	
+	printList(head);
+	
+	return 0;
+}
+
+
+
+
+
+
+
+
+
 
 
 
