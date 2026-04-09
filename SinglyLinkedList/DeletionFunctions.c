@@ -232,23 +232,22 @@ int isEmpty(Node* head){
 
 
 int main(){
-	Node* head = (Node*)malloc(sizeof(Node));
+	Node* head=malloc(sizeof(Node));
 	Node* tail=NULL;
-	head->data = 10;
+	head->data=10;
 
-	Node* secondNode = (Node*)malloc(sizeof(Node));
-	secondNode->data = 20;
+	Node* secondNode=malloc(sizeof(Node));
+	secondNode->data=20;
 
-	Node* thirdNode = (Node*)malloc(sizeof(Node));
-	thirdNode->data = 30;
+	Node* thirdNode =malloc(sizeof(Node));
+	thirdNode->data=30;
 
-	head->next = secondNode;
-	secondNode->next = thirdNode;
-	thirdNode->next = NULL;
-	 tail = thirdNode;
+	head->next=secondNode;
+	secondNode->next=thirdNode;
+	thirdNode->next= NULL;
+	tail=thirdNode;
 	
 	printList(head);
-	
 	return 0;
 }
 

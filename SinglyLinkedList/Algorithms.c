@@ -7,7 +7,7 @@ typedef struct Node{
 } Node;
 
 int insertAtTail(Node**head,Node**tail,int value){
-	Node* newNode=(Node*) malloc(sizeof(Node));
+	Node* newNode=malloc(sizeof(Node));
 	if(newNode==NULL){return 0; } 
 	
 	newNode->data=value;

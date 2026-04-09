@@ -15,7 +15,7 @@ typedef struct Node{
 //Time Complexity:O(1) 
 //Space Complexity also constant O(1)
 int insertAtHead(Node** head,Node**tail,int value){
-	Node* newNode=(Node*) malloc(sizeof(Node));
+	Node* newNode=malloc(sizeof(Node));
 	if(newNode==NULL){
 		return 0; //can also return error msg or address of head depending on function return type
 	}
@@ -40,7 +40,7 @@ int insertAtHead(Node** head,Node**tail,int value){
 //Insert At Tail
 //Time and Space Complexity are constant bcz no transverse
 int insertAtTail(Node**head,Node**tail,int value){
-	Node* newNode=(Node*) malloc(sizeof(Node));
+	Node* newNode=malloc(sizeof(Node));
 	if(newNode==NULL){
 		return 0;
 	}
@@ -116,7 +116,7 @@ int insertAtPosition(Node**head,Node**tail,int value,int position){
 				counter++;
 				temp=temp->next;
 			}
-			Node* newNode=(Node*) malloc(sizeof(Node));
+			Node* newNode=malloc(sizeof(Node));
 			if(newNode==NULL){return 0;}
 			newNode->data=value;
 			newNode->next=NULL;
@@ -153,7 +153,7 @@ int insertAtPositionMin(Node**head, Node**tail,int value,int position){
         temp = temp->next;
     }
     
-    Node* newNode=(Node*)malloc(sizeof(Node));
+    Node* newNode=malloc(sizeof(Node));
     if (newNode ==NULL) {return 0;} 
     
     newNode->data = value;
@@ -363,7 +363,6 @@ int main(){
 	int result1=insertAtTail(&head,&tail,20);
 	int result2=insertAtTail(&head,&tail,30);
 	int result3=insertAtTail(&head,&tail,40);
-	
 	
 	printList(head);
 	return 0;

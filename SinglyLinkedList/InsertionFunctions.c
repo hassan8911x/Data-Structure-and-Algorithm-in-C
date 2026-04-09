@@ -20,7 +20,7 @@ can be void without response
 
 //Time Complexity: Constant O(1)
 int insertAtHead(Node** head,Node**tail,int value){
-	Node* newNode= (Node*) malloc(sizeof(Node));		//allocating memory for Node
+	Node* newNode=malloc(sizeof(Node));		//allocating memory for Node
 	if(newNode==NULL){return 0;} 		 //case 1
 	
 	newNode->data=value;
@@ -48,7 +48,7 @@ Insert At Tail's Possible Cases:
 
 //Time Complexity: Constant O(1)
 int insertAtTail(Node**head,Node**tail,int value){
-	Node* newNode=(Node*) malloc(sizeof(Node));
+	Node* newNode=malloc(sizeof(Node));
 	if(newNode==NULL){return 0; }       //case 1
 	
 	newNode->data=value;
@@ -115,7 +115,7 @@ int insertInMiddle(Node**head, Node**tail, int position, int value){
 		temp=temp->next;
 	}
 	if(temp!=NULL){
-		Node* newNode=(Node*) malloc(sizeof(Node));
+		Node* newNode=malloc(sizeof(Node));
 		if(newNode==NULL){return 0;}
 		newNode->data=value;
 		
