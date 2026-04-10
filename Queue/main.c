@@ -1,21 +1,28 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include "queue.h"
 
 int main(){
 	Queue* queue=initQueue();
-	int x=enqueue(queue,10);
-	int y=enqueue(queue,20);
-	int z=enqueue(queue,30);
+	int* element_1=malloc(sizeof(int));
+	*element_1=10;
+	int enqueueResult1=enqueue(queue,element_1);
 	
-	printf("Front: %d and Length: %d\n",queue->front->data,queue->size);
-	printf("Rear: %d\n",queue->rear->data);
+	int* element_2=malloc(sizeof(int));
+	*element_2=20;
+	int enqueueResult2=enqueue(queue,element_2);
 	
-	int dequeueItem=0;
-	int zx=dequeue(queue,&dequeueItem);
-	if(z!=0){
-		printf("Dequeued: %d and now size is: %d",dequeueItem,queue->size);
-		
-	}
+	printf("Front: %d\nRear: %d\nSize:%d\n",*(int*)queue->front->data,*(int*)queue->rear->data,queue->size);
+	
+	int* dequeuedElement;
+	*dequeuedElement;
+	int dequeueResult=dequeue(queue,(void**)&dequeuedElement);
+	
+	printf("Dequeued Element : %d\nNewsize : %d\n",*(int*)dequeuedElement,queue->size);
+	
+	
+	free(dequeuedElement);
+	clearQueue(queue);
+	free(queue);
 	return 0;
 }
-

@@ -2,7 +2,7 @@
 #define Queue_H
 
 typedef struct Node{
-	int data;
+	void* data;		
 	struct Node* next;
 } Node;
 
@@ -13,10 +13,10 @@ typedef struct Queue{
 }Queue;
 
 Queue* initQueue();
-int enqueue(Queue* queue,int value);
+int enqueue(Queue* queue,void* value);
 int isEmpty(Queue* queue);
-int dequeue(Queue* queue,int* item);
-int peek(Queue* queue,int* value);
-void clearQueue(Queue* queue);
+int dequeue(Queue* queue,void** item);
+int peek(Queue* queue,void** value);
+int clearQueue(Queue* queue);
 
 #endif

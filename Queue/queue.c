@@ -22,7 +22,7 @@ int isEmpty(Queue* queue){
 
 /*Time Complexity: O(1)
 */
-int enqueue(Queue* queue,int value){
+int enqueue(Queue* queue,void* value){
 	Node* newNode=malloc(sizeof(Node));
 	if(newNode==NULL) return 0;
 	
@@ -46,7 +46,7 @@ int enqueue(Queue* queue,int value){
 function's return type is for the operation success flag
 returned value is stored in the pointer if passed
 */
-int dequeue(Queue* queue,int* item){
+int dequeue(Queue* queue,void** item){
 	if(queue->size==0) return 0;
 	Node* target=queue->front;		//marking front as target for deletion
 	*item=target->data;			//storing for deletion
@@ -65,7 +65,7 @@ int dequeue(Queue* queue,int* item){
 //Returning the front's data
 //Here problem is that -1 may be the value of the front then its ambiguous to return the -1 
 //therefore int can be the operation flag and value can be checked by passing the varible
-int peek(Queue* queue,int* value){
+int peek(Queue* queue,void** value){
 	if(queue->size==0){
 		return 0;
 	}
@@ -73,35 +73,22 @@ int peek(Queue* queue,int* value){
 	return 1;
 }
 
-void clearQueue(Queue* queue){
-	if(queue->front==NULL) printf("Queue is already empty");
+int clearQueue(Queue* queue){
 	while(queue->front!=NULL){
 		Node* target=queue->front;
 		queue->front=target->next;
+		free(target->data);
 		free(target);
 	}
 	queue->front=NULL;
 	queue->rear=NULL;
 	queue->size=0;
-	printf("Queue is cleared\n");
+	return 1;
 }
 
 
 
-//
-//int main(){
-//	Queue* queue=initQueue();
-//	int x=enqueue(queue,10);
-//	int y=enqueue(queue,20);
-//	int z=enqueue(queue,30);
-//	int item=0;
-//	int dequeueResult=dequeue(queue,&item);
-//	printf("Dequeue Result: %d and Item : %d\n",dequeueResult,item);
-//	printf("Front: %d\n",queue->front->data);
-//	printf("Rear: %d \nand Size: %d\n",queue->rear->data,queue->size);
-//	clearQueue(queue);
-//	return 0;
-//}
+
 
 
 
