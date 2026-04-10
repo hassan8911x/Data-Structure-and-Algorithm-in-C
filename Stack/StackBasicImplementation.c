@@ -75,6 +75,10 @@ void clearStack(Stack* stack){
 	printf("Memory cleared\n");
 }
 
+
+
+
+
 int main(){
 	Stack* stack=malloc(sizeof(Stack));
 	stack->length=0;
