@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include"arrays.h"
+#include<stdlib.h>
 
 int main(){
 	int array[]={1,2,3};
@@ -13,7 +14,7 @@ int main(){
 	printf("MaxSum using Kadane algo: %d\n",maxSum2);
 	
 	int array2[]={1,5,7,11,20};
-	int size2=sizeof(array2)/sizeof(array[0]);
+	int size2=sizeof(array2)/sizeof(array2[0]);
 	int target=27;
 	
 	int index1=0;
@@ -25,6 +26,40 @@ int main(){
 	}else{
 		printf("Target sum not found\n");
 	}
-	return 0;
 	
+	int array3[]={3,3,1,1,3,1,2,3,3,3,3,1};
+	int size3=sizeof(array3)/sizeof(array3[0]);
+	int maj=mooreVotingAlgorithm(array3,size3);
+	if(maj!=-1)
+		printf("Majority Element: %d\n",maj);
+	else
+		printf("Majority Element not found\n");
+		
+	int array4[]={1,8,6,2,5,4,8,3,7};
+	int size4=sizeof(array4)/sizeof(int);
+	int maxWater1=maxWater(array4,size4);
+	int maxWater2=maxWaterOptimized(array4,size4);
+	printf("Approach 1: %d\n Approach 2: %d\n",maxWater1,maxWater2);
+	
+	int array5[]={1,2,3,4};
+	int size5=sizeof(array5)/sizeof(array5[0]);
+	int* answerArray=productArrayOptimized(array5,size5);
+	int i;
+	for(i=0;i<size5;i++){
+		printf("%d ",answerArray[i]);
+	}
+
+	free(answerArray);
+	
+	return 0;
 }
+
+
+
+
+
+
+
+
+
+
